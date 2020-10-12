@@ -3,7 +3,7 @@ exports.up = function (knex) {
     return knex.schema
         .createTable("votes", (tbl) => {
             tbl.increments();
-            tbl.string("click_yes", 128).notNullable();
+            tbl.integer("click_yes").notNullable().defaultTo(0);
         })
 
 };

@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     Votes.add(1)
         .then(vote => {
-            console.log(vote)
+            // console.log(vote)
             Votes.findAll()
                 .then(response => {
                     let count = response.length
