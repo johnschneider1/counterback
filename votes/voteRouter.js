@@ -30,18 +30,38 @@ router.post('/', (req, res) => {
             // console.log(vote)
             Votes.findAll()
                 .then(response => {
-                    let count = response.length
+                    let count = response[0].click_yes
+                    console.log(count)
                     res.status(201).json({ votes: count })
                 })
                 .catch(err => {
                     res.status(500).json({ error: "vote could not be found" })
                 })
-
             // res.status(200).json(vote);
         })
         .catch(err => {
             res.status(500).json({ error: "vote not made" })
         })
 })
+
+// router.post('/', (req, res) => {
+//     Votes.add(1)
+//         .then(vote => {
+//             // console.log(vote)
+//             Votes.findAll()
+//                 .then(response => {
+//                     let count = response.length
+//                     res.status(201).json({ votes: count })
+//                 })
+//                 .catch(err => {
+//                     res.status(500).json({ error: "vote could not be found" })
+//                 })
+
+//             // res.status(200).json(vote);
+//         })
+//         .catch(err => {
+//             res.status(500).json({ error: "vote not made" })
+//         })
+// })
 
 module.exports = router

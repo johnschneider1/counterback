@@ -8,10 +8,13 @@ module.exports = {
 
 async function add(vote) {
     try {
-        let voteCount = await db('votes as v').select('v.click_yes').where("v.id", "=", 1)
-        console.log(voteCount)
-        await db('votes').where("id", "=", 1).update({ click_yes: voteCount + 1 })
-        return voteCount + 1
+        let voteCounter = await db('votes as v').where("v.id", "=", 1).first()
+        // console.log(voteCounter)
+        let count = voteCounter.click_yes
+        // console.log(count)
+        await db('votes').where("id", "=", 1).update({ ...voteCounter, click_yes: count + 1 })
+        // return voteCount + 1
+        return count + 1
     }
     catch (err) {
         return 0
