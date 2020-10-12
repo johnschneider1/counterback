@@ -8,7 +8,7 @@ module.exports = {
 
 function add(vote) {
     return db('votes')
-        .insert(vote, 'id')
+        .insert({ click_yes: vote }, 'id')
         .then(([id]) => findById(id));
 
 }

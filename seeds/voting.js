@@ -1,13 +1,13 @@
 
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('votes').del()
     .then(function () {
       // Inserts seed entries
-      return knex('table_name').insert([
-        { id: 1, colName: '1' },
-        { id: 2, colName: '2' },
-        { id: 3, colName: '3' }
+      return knex('votes').insert([
+        { id: 1, click_yes: '1' },
+        { id: 2, click_yes: '2' },
+        { id: 3, click_yes: '3' }
       ]);
     });
 };
