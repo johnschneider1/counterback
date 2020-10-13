@@ -6,7 +6,9 @@ router.get('/', (req, res) => {
     Votes.findAll()
         .then(response => {
             // console.log(response)
-            let count = response.length
+            // let count = response.length
+            let count = response[0].click_yes;
+            console.log("loading", count)
             res.status(200).json({ votes: count })
         })
         .catch(err => {
@@ -31,7 +33,7 @@ router.post('/', (req, res) => {
             Votes.findAll()
                 .then(response => {
                     let count = response[0].click_yes
-                    console.log(count)
+                    console.log("click yes", response)
                     res.status(201).json({ votes: count })
                 })
                 .catch(err => {
